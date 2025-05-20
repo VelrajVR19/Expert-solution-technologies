@@ -173,23 +173,118 @@
         font-size: 18px;
       }
     }
+
+    #preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  height: 100vh;
+}
+
+#preloader .loader {
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+#preloader img {
+  width: 80px;
+  height: 80px;
+  animation: pulse 1.5s infinite;
+  margin-bottom: 10px;
+}
+
+#preloader h2 {
+  font-size: 18px;
+  color: #1e293b;
+  margin-bottom: 12px;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+.dots span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin: 0 2px;
+  background-color: #2563eb;
+  border-radius: 50%;
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+.dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+
+  
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.logo img {
+  animation: spin 6s linear infinite;
+}
+.logo img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  animation: spin 3s linear infinite;
+}
+
   </style>
 </head>
 <body>
 
   <div class="form-container">
     <div class="logo">
-      <img src="/Assests/Logo.png" alt="logo">
+      <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSjxqhopL41jucffDJTIFNRRTPnEhV0jDXuHBHEhGwhKdSTXNby" alt="logo">
       <h2>Interview Feedback Form</h2>
     </div>
 
     <form action="/send" method="POST" id="feedbackForm">
+
+      <div class="form-group">
+        <label class="required-label">Interviewer Name:</label>
+        <input type="text" name="interviewername" required>
+      </div>
+    
       <div class="form-group">
         <label class="required-label">Name:</label>
         <input type="text" name="name" required>
       </div>
   
-      <div class="form-group">
+      <div class="form-group full-width">
         <label class="required-label">Role:</label>
         <select name="role" required>
           <option value="" disabled selected>Select Role</option>
@@ -245,5 +340,13 @@
     </form>
     
   </div>
+
+
+
+
+
+
+
+
 </body>
 </html>
